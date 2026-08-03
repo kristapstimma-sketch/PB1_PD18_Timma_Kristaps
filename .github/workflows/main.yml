@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Repozitorija klonēšana (Checkout)
+      uses: actions/checkout@v4
+
+    - name: Python vides iestatīšana
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.14'
+
+    - name: Palaist testus
+      run: |
+        python -m unittest discover .
